@@ -80,17 +80,22 @@ function App() {
 
   const handleStart = async () => {
     try {
-      // Use wss-proxy.fly.dev as WebSocket proxy
+      // Use wsproxy.herokuapp.com as WebSocket proxy
       const wsUrl = window.location.protocol === 'https:' 
-        ? `wss://wss-proxy.fly.dev/proxy?url=ws://185.113.122.75:49518/audio`
+        ? `wss://wsproxy.herokuapp.com/ws/185.113.122.75:49518/audio`
         : 'ws://185.113.122.75:49518/audio';
       
+      console.log('Connecting to WebSocket:', wsUrl);
       wsRef.current = new WebSocket(wsUrl);
       
       // Add connection error handling
       wsRef.current.onerror = (error) => {
         console.error('WebSocket Error:', error);
         alert('Connection failed. Please try again.');
+      };
+
+      wsRef.current.onopen = () => {
+        console.log('WebSocket connected successfully');
       };
       
       // Initialize Audio Context
