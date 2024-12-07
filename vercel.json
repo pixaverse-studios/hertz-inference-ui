@@ -1,8 +1,8 @@
 {
   "rewrites": [
     {
-      "source": "/api/:path*",
-      "destination": "http://185.113.122.75:49518/:path*"
+      "source": "/api/set_temperature",
+      "destination": "http://185.113.122.75:49518/set_temperature"
     }
   ],
   "headers": [

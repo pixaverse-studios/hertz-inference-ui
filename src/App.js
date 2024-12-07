@@ -80,10 +80,18 @@ function App() {
 
   const handleStart = async () => {
     try {
-      // Initialize WebSocket with secure WebSocket through proxy
-      const wsProtocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
-      const wsUrl = `${wsProtocol}//${window.location.host}/api/audio`;
+      // Use wss-proxy.fly.dev as WebSocket proxy
+      const wsUrl = window.location.protocol === 'https:' 
+        ? `wss://wss-proxy.fly.dev/proxy?url=ws://185.113.122.75:49518/audio`
+        : 'ws://185.113.122.75:49518/audio';
+      
       wsRef.current = new WebSocket(wsUrl);
+      
+      // Add connection error handling
+      wsRef.current.onerror = (error) => {
+        console.error('WebSocket Error:', error);
+        alert('Connection failed. Please try again.');
+      };
       
       // Initialize Audio Context
       audioContextRef.current = new (window.AudioContext || window.webkitAudioContext)({
