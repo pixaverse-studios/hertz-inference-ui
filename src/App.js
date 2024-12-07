@@ -81,7 +81,7 @@ function App() {
   const handleStart = async () => {
     try {
       // Use WSS for WebSocket connection
-      wsRef.current = new WebSocket('wss://79.116.71.208:26635/audio');
+      wsRef.current = new WebSocket('wss://47.186.25.253:54743/audio');
       
       console.log('Connecting to WebSocket...');
       
@@ -203,7 +203,7 @@ function App() {
     setTemperatures(newTemperatures);
     
     try {
-      const url = new URL('https://79.116.71.208:26726/set_temperature');
+      const url = new URL('https://47.186.25.253:54743/set_temperature');
       url.searchParams.append('token_temp', newTemperatures.token_temp);
       url.searchParams.append('categorical_temp', newTemperatures.categorical_temp);
       url.searchParams.append('gaussian_temp', newTemperatures.gaussian_temp);
