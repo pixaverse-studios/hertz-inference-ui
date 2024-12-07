@@ -1,0 +1,83 @@
+.App {
+  text-align: center;
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  color: white;
+}
+
+.App-header {
+  width: 100%;
+  max-width: 800px;
+  padding: 20px;
+}
+
+h1 {
+  margin-bottom: 40px;
+  color: #61dafb;
+}
+
+.controls {
+  margin-bottom: 40px;
+}
+
+button {
+  padding: 15px 30px;
+  font-size: 18px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+button.start {
+  background-color: #4CAF50;
+  color: white;
+}
+
+button.stop {
+  background-color: #f44336;
+  color: white;
+}
+
+button:hover {
+  opacity: 0.9;
+  transform: scale(1.05);
+}
+
+.temperature-controls {
+  background-color: #363a45;
+  padding: 20px;
+  border-radius: 10px;
+  margin-top: 20px;
+}
+
+.temp-input {
+  margin: 15px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+
+.temp-input label {
+  flex: 1;
+  text-align: right;
+}
+
+.temp-input input {
+  flex: 1;
+  padding: 8px;
+  border: 1px solid #61dafb;
+  border-radius: 4px;
+  background-color: #282c34;
+  color: white;
+}
+
+.temp-input input:focus {
+  outline: none;
+  border-color: #4CAF50;
+}
