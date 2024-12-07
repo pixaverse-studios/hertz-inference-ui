@@ -80,8 +80,10 @@ function App() {
 
   const handleStart = async () => {
     try {
-      // Initialize WebSocket
-      wsRef.current = new WebSocket('ws://185.113.122.75:49518/audio');
+      // Initialize WebSocket with secure WebSocket through proxy
+      const wsProtocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
+      const wsUrl = `${wsProtocol}//${window.location.host}/api/audio`;
+      wsRef.current = new WebSocket(wsUrl);
       
       // Initialize Audio Context
       audioContextRef.current = new (window.AudioContext || window.webkitAudioContext)({
@@ -191,7 +193,7 @@ function App() {
     setTemperatures(newTemperatures);
     
     try {
-      const url = new URL('http://185.113.122.75:49518/set_temperature');
+      const url = new URL(`${window.location.origin}/api/set_temperature`);
       url.searchParams.append('token_temp', newTemperatures.token_temp);
       url.searchParams.append('categorical_temp', newTemperatures.categorical_temp);
       url.searchParams.append('gaussian_temp', newTemperatures.gaussian_temp);
