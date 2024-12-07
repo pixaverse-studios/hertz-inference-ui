@@ -80,13 +80,10 @@ function App() {
 
   const handleStart = async () => {
     try {
-      // Use wsproxy.herokuapp.com as WebSocket proxy
-      const wsUrl = window.location.protocol === 'https:' 
-        ? `wss://wsproxy.herokuapp.com/ws/185.113.122.75:49518/audio`
-        : 'ws://185.113.122.75:49518/audio';
+      // Use WSS for WebSocket connection
+      wsRef.current = new WebSocket('wss://79.116.71.208:26726/audio');
       
-      console.log('Connecting to WebSocket:', wsUrl);
-      wsRef.current = new WebSocket(wsUrl);
+      console.log('Connecting to WebSocket...');
       
       // Add connection error handling
       wsRef.current.onerror = (error) => {
@@ -206,7 +203,7 @@ function App() {
     setTemperatures(newTemperatures);
     
     try {
-      const url = new URL(`${window.location.origin}/api/set_temperature`);
+      const url = new URL('https://79.116.71.208:26726/set_temperature');
       url.searchParams.append('token_temp', newTemperatures.token_temp);
       url.searchParams.append('categorical_temp', newTemperatures.categorical_temp);
       url.searchParams.append('gaussian_temp', newTemperatures.gaussian_temp);
