@@ -81,7 +81,7 @@ function App() {
   const handleStart = async () => {
     try {
       // Use WSS for WebSocket connection
-      wsRef.current = new WebSocket('wss://79.116.71.208:26726/audio');
+      wsRef.current = new WebSocket('wss://79.116.71.208:26635/audio');
       
       console.log('Connecting to WebSocket...');
       
